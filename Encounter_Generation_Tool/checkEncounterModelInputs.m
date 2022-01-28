@@ -9,7 +9,7 @@ function checkEncounterModelInputs(ac)
 % generateDAAEncounterSet assumes the uncorrelated bayes net and there are
 % some variables / functions that are hardcoded in response
 % Expected labels of initial network
-labels_initial = strtrim({'"G"';'"A"';'"L"';'"v"';'"\dot v"';'"\dot h"';'"\dot \psi" '});
+labels_initial = strtrim({'"L"';'"v"';'"\dot v"';'"\dot h"';'"\dot \psi" '});
 
 if isrow(ac.labels_initial) & ~isrow(labels_initial)
     labels_initial = labels_initial';
@@ -18,8 +18,8 @@ end
 errMsg = sprintf('The input model initial network labels are not what is expected');
 assert(all(strcmp(labels_initial, strtrim(ac.labels_initial))),errMsg);
 
-errMsg = sprintf('The expected uncorrelated encounter models have 7 variables in the initial network, the input model has %i', ac.n_initial);
-assert(ac.n_initial == 7,errMsg);
+%errMsg = sprintf('The expected uncorrelated encounter models have 7 variables in the initial network, the input model has %i', ac.n_initial);
+%assert(ac.n_initial == 7,errMsg);
 
 %% Check values in the vector are numeric and non-negative
 numericalVars = strtrim({'r_initial','r_transition'});
@@ -45,11 +45,11 @@ for i = 1:numel(logicalVars)
 end
 
 %% zero_bins must be be less than than number of elements in boundaries
-ac.zero_bins(cellfun('isempty',ac.zero_bins)) = {0}; %Assign 0 to the empty cells
-assert(isnumeric([ac.zero_bins{:}]) ...
-    && (all([ac.zero_bins{:}]<cellfun('length',ac.boundaries) | [ac.zero_bins{:}]==0)) ...
-    && all([ac.zero_bins{:}]>=0), ...
-    'Values in zero_bins must be less than the corresponding number of elements in boundaries');
+%ac.zero_bins(cellfun('isempty',ac.zero_bins)) = {0}; %Assign 0 to the empty cells
+%assert(isnumeric([ac.zero_bins{:}]) ...
+%    && (all([ac.zero_bins{:}]<cellfun('length',ac.boundaries) | [ac.zero_bins{:}]==0)) ...
+%    && all([ac.zero_bins{:}]>=0), ...
+%    'Values in zero_bins must be less than the corresponding number of elements in boundaries');
 
 %% Check dimensions of variables associated with the initial network match expectations
 assert(ac.n_initial == numel(ac.labels_initial), 'n_initial should equal the number of labels_initial');

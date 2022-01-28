@@ -4,7 +4,8 @@
 % Using trajectories sampled from an Uncorrelated encounter model
 
 % Setup input parameter (.ini) file
-parameterFile = [getenv('AEM_DIR_DAAENC') filesep 'Example_Inputs' filesep 'UncorVsUncor.ini'];
+%parameterFile = [getenv('AEM_DIR_DAAENC') filesep 'Example_Inputs' filesep 'FWMEVsFWME.ini'];
+parameterFile = [getenv('AEM_DIR_DAAENC') filesep 'My_Inputs' filesep 'GliderVsGlider.ini'];
 
 % If true, plot
 isPlot = true;
