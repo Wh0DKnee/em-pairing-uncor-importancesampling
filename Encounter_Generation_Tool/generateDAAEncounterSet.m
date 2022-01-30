@@ -45,7 +45,7 @@ layers = reshape(iniSettings.altLayers, 2, dim1)';
 
 % Default start used by dbn_hierarchical_sample() in sampleFullUncorModel()
 % Fix geographic region as CONUS (=1), airspace class as other (=4). Optional setting.
-startDefault = {[1],[],[],[],[]};
+startDefault = {[],[],[],[],[]};
 
 % Dynamic constraints
 % v_low,v_high,dh_ftps_min,dh_ftps_max,qmax,rmax

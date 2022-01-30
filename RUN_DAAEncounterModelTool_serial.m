@@ -46,7 +46,27 @@ for i = encIds
     dyn1 = [1.7 1116 -10000 10000 deg2rad(3), 1000000];
     dyn2 = [1.7 1116 -10000 10000 deg2rad(3), 1000000];
     results = run_dynamics_fast(ic1,event1,dyn1,ic2,event2,dyn2,sample.runTime_s);
-    
+
+    % modified code start
+    result1 = results(1);
+    table1 = struct2table(result1);
+    result2 = results(2);
+    table2 = struct2table(result2);
+    [filepath,inifilename,ext] = fileparts(parameterFile);
+    date = [datetime('now')];
+    datestring = datestr(date, 'dd_mmm_yyyy_HH_MM_SS_FFF');
+
+    filename1 = append(inifilename, '_');
+    filename1 = append(filename1, datestring);
+    outputfile1 = [getenv('AEM_DIR_DAAENC') filesep 'Output_Tables' filesep 'Ownship' filesep filename1];
+    writetable(table1, outputfile1)
+
+    filename2 = append(inifilename, '_');
+    filename2 = append(filename2, datestring);
+    outputfile2 = [getenv('AEM_DIR_DAAENC') filesep 'Output_Tables' filesep 'Intruder' filesep filename2];
+    writetable(table2, outputfile2)
+    % modified code end
+
     if isPlot
         % Initialize figure
         figure(i); set(gcf,'name',sprintf('%s: %i',parameterFile,i));
