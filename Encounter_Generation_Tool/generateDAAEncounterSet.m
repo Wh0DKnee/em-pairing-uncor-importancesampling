@@ -82,7 +82,7 @@ else
     
     % Instantiate object
     encFile1 = [getenv('AEM_DIR_BAYES') filesep 'model' filesep iniSettings.ownshipEmFile];
-    ac1 = UncorEncounterModel('parameters_filename',encFile1,'isOverwriteZeroBoundaries',true,'idxZeroBoundaries',[1 2 3]);
+    ac1 = UncorEncounterModel('parameters_filename',encFile1,'isOverwriteZeroBoundaries',true,'idxZeroBoundaries',[1]);
     
     %Read in customized encounter model variables, if provided
     if ~isempty(iniSettings.ownEncVariablesFile)
@@ -128,7 +128,7 @@ if iniSettings.intruderSampleTrajectory
 else
     % load encounter model with sufficient statistics for intruder
     encFile2 = [getenv('AEM_DIR_BAYES') filesep 'model' filesep iniSettings.intruderEmFile];
-    ac2 = UncorEncounterModel('parameters_filename',encFile2,'isOverwriteZeroBoundaries',true,'idxZeroBoundaries',[1 2 3]);
+    ac2 = UncorEncounterModel('parameters_filename',encFile2,'isOverwriteZeroBoundaries',true,'idxZeroBoundaries',[1]);
 
     %Read in customized encounter model variables, if provided
     if ~isempty(iniSettings.intEncVariablesFile)
